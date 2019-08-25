@@ -248,21 +248,56 @@ text-align: left;
     </header>
       &nbsp;&nbsp; &nbsp;&nbsp; 
       <body>
-       <div id = "main"> 
-           &nbsp;&nbsp;
-    <h1>Profile</h1>
-<p>Uses access to the Google Accounts stored within firebase</p>
-&nbsp;
-<p>Allows individuals to edit their profile information as well</p>
-&nbsp;
-<p>&nbsp;</p>
-&nbsp;
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-</div>
-  </body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/6.4.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#reserved-urls -->
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+<h1>Hello <span id="clientName"></span></h1>
+</body>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAaA9lL9-jszNQv_J8Jm8sRVvviE-4Q5Wk",
+    authDomain: "independenteating.firebaseapp.com",
+    databaseURL: "https://independenteating.firebaseio.com",
+    projectId: "independenteating",
+    storageBucket: "",
+    messagingSenderId: "795800431186",
+    appId: "1:795800431186:web:b92dae1313f7795a"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+function login() {
+    function newLoginHappened(user) {
+        if (user) {
+            //User is signed in
+            app(user);
+        } else {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider);
+        }
+    }
+    firebase.auth().onAuthStateChanged(newLoginHappened)
+}
+  function app(user) {
+      // user.displayName
+      //ser.email
+      //user.photoURL
+      //user.uid
+document. getElementById("clientName").innerHTML = user.displayName
+  }
+  window.onload = app;
+</script>
+
   <footer class="social-footer">
         <div id="social">
           <ul>
