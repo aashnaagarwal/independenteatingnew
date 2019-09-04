@@ -31,14 +31,14 @@
     if (!$link) {
     echo('Could not connect: ' . mysql_error());
     }
-    $sql = "SELECT RecipeID,RecipeName from recipe limit 100";
+    $sql = "SELECT RecipeID,RecipeName,OriginalUrl from recipe limit 100";
     $result = $link-> query($sql);
     if (!$result) {
         trigger_error('Invalid query: ' . $link->error);
     }
     if ($result->num_rows >0){
         while($row = $result -> fetch_assoc()){
-            echo "<tr><td>". $row["RecipeID"]. "</td><td>". $row["RecipeName"]. "</td><tr>";  
+            echo "<tr><td>". $row["RecipeID"]. "</td><td>". $row["RecipeName"]."</td><td>". $row["OriginalUrl"]. "</td><tr>";  
         }
         echo "</table>";
     }
