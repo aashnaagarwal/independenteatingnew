@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <style>
     body {
@@ -12,8 +11,9 @@
         background-color: beige;
     }
     a {
-        text-decoration: none;
-        color: beige;
+        font-family: Trebuchet MS;
+        text-decoration: underline darkblue;
+        color: darkblue;
     }
 </style><!--
 <header>
@@ -38,7 +38,7 @@
     }
     if ($result->num_rows >0){
         while($row = $result -> fetch_assoc()){
-            echo "<tr><td>". $row["RecipeID"]. "</td><td>". $row["RecipeName"]."</td><td>". $row["OriginalUrl"]. "</td><tr>";  
+            echo "<tr><td>". $row["RecipeID"]. "</td><td><a href=".$row["OriginalUrl"]."  target=\"preview\">". $row["RecipeName"]."</a></td><tr>";  
         }
         echo "</table>";
     }
