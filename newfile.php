@@ -1,9 +1,7 @@
 <html>
 <style>
     body {
-        /*background-color: black;*/
         background-color: white;
-        /*color: beige;*/
         color: black;
     }
     input {
@@ -15,49 +13,45 @@
         text-decoration: underline darkblue;
         color: darkblue;
     }
-</style><!--
-<header>
-    <input type="text" placeholder="Search..">
-</header>-->
+</style>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+    var config = {
+    apiKey: "AIzaSyAJ5K8KtDQ3vO-o5QJ0jSeETWJAMhIvezo ",
+    authDomain: "independent-eating.firebaseapp.com",
+    databaseURL: "https://independent-eating.firebaseio.com",
+    projectId: "independent-eating",
+    databaseURL: "https://independent-eating.firebaseio.com/",
+    storageBucket: "independent-eating.appspot.com"
+  };
+  firebase.initializeApp(config);
+  // Get a reference to the database service
 
+</script>
 <body>
-    <table>
-    <?php
-    $host="foodlist.cvzwyzvcphe7.us-east-2.rds.amazonaws.com"; // Host name.
-    $db_user="viewonly"; // MySQL username.
-    $db_password="password"; // MySQL password.
-    $database="recipes"; // Database name.
-    $link = mysqli_connect($host,$db_user,$db_password,$database);
-    if (!$link) {
-    echo('Could not connect: ' . mysql_error());
-    }
-    $sql = "SELECT RecipeID,RecipeName,OriginalUrl from recipe limit 100";
-    $result = $link-> query($sql);
-    if (!$result) {
-        trigger_error('Invalid query: ' . $link->error);
-    }
-    if ($result->num_rows >0){
-        while($row = $result -> fetch_assoc()){
-            echo "<tr><td>". $row["RecipeID"]. "</td><td><a href=".$row["OriginalUrl"]."  target=\"preview\">". $row["RecipeName"]."</a></td><tr>";  
+<table style="width:100%" id="ex-table">
+  <tr>
+    <th>RecipeID</th>
+    <th>RecipeName</th> 
+    <th>OriginalUrl</th>
+</table> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    var database = firebase.database();
+    database.ref().once('value', function(snapshot){
+        if(snapshot.exists()){
+            var content = '';
+            snapshot.forEach(function(data){
+                var val = data.val();
+                content +='<tr>';
+                content += '<td>' + val.RecipeID + '</td>';
+                content += '<td>' + val.RecipeName + '</td>';
+                content += '<td><a href=' + val.OriginalUrl + ' target=\"preview\">'+val.OriginalUrl+'</a></td>';
+                content += '</tr>';
+            });
+            $('#ex-table').append(content);
         }
-        echo "</table>";
-    }
-    else
-    {
-        echo "it is borked";
-    }
-    mysqli_close($link);
-    ?>
-        
-    <!--
-    &nbsp;&nbsp;
-        <table style="width:100%">
-                <tr>
-                  <td><a href="https://www.allrecipes.com/recipe/21014/good-old-fashioned-pancakes/" target="allrecipes">Test Recipe</td>
-                </tr>
-                <tr>
-                        <td><a href="https://www.allrecipes.com/recipe/45396/easy-pancakes/" target="allrecipes">Test Recipe 2</td>
-                </tr>
-              </table>-->
+    });
+    </script>
 </body>
 </html>
