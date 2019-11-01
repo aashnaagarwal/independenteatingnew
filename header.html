@@ -12,6 +12,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Open sans", sans-serif;
+    color: #fff;
+    text-decoration: none;
   }
   #connav{
     position: fixed;
@@ -20,13 +22,11 @@
     background: #000;
     height: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
   }
   
   #connav ul {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
   }
   
   #connav ul li {
@@ -44,7 +44,13 @@
   #connav li a {
     display: block;
     text-decoration: none;
-    color: #fff;
+  }
+  #join{
+    line-height: 60px;
+  }
+  #join a:hover{
+    color: #ccc;
+    transition: .5s;
   }
 </style>
 
@@ -60,6 +66,10 @@
         <li><a href="updates.html">Scan</a></li>
         <li><a href="contact.html"> Chat</a></li>
       </ul>
+      <div id="join">
+        <a href="#">login</a> /
+        <a href="#">signup</a>
+      </div>
     </div>
   </header>
 
