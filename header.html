@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>header</title>
+</head>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open sans", sans-serif;
+    color: #fff;
+    text-decoration: none;
+  }
+  #connav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #000;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  #connav ul {
+    display: flex;
+  }
+  
+  #connav ul li {
+    list-style: none;
+    line-height: 60px;
+    padding: 0 20px;
+    transition: .5s;
+  }
+  
+  #connav ul li:hover {
+    background-color: peru;
+    transition: .5s;
+  }
+  
+  #connav li a {
+    display: block;
+    text-decoration: none;
+  }
+  #join{
+    line-height: 60px;
+  }
+  #join a:hover{
+    color: #ccc;
+    transition: .5s;
+  }
+</style>
+
+<body>
+
+
+  <header>
+    <div id="connav">
+      <ul>
+        <li><a href="index.html ">Home</a> </li>
+        <li><a href="about.html">About</a> </li>
+        <li><a href="pavilions.html">Schedule</a></li>
+        <li><a href="updates.html">Scan</a></li>
+        <li><a href="contact.html"> Chat</a></li>
+      </ul>
+      <div id="join">
+        <a href="#">login</a> /
+        <a href="#">signup</a>
+      </div>
+    </div>
+  </header>
+
+
+
+</body>
+
+</html>
